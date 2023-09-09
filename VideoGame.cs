@@ -264,7 +264,7 @@ namespace CrowdisLab2
             }
             else if (input == "" || input == " ")
             {
-                Console.WriteLine("Displaying games from a random year");
+                Console.WriteLine("Displaying games from a random year...");
                 Random random = new Random();
                 int randomYear = random.Next(1980, 2021);
 
