@@ -262,7 +262,7 @@ namespace CrowdisLab2
                     Console.WriteLine(game.Name);
 
             }
-            else if (input == " ")
+            else if (input == "" || input == " ")
             {
                 Console.WriteLine("Displaying games from a random year");
                 Random random = new Random();
