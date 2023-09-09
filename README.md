@@ -23,7 +23,8 @@ this allows the user to enter a year and then the games published that year are 
 <br>
 if no year is entered then a random year is selected:
 <br>
-<img width="451" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/55e36f98-fb96-4564-9723-db6330097d07">
+<img width="853" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/7101bae0-69eb-4722-bc48-59305414f8e3">
+
 
 <hr>
 
