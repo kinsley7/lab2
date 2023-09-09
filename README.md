@@ -7,7 +7,7 @@ shows the global best sellers:
 <br>
 <img width="305" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/f4cc528d-35d5-46b4-8728-b5a98dfe1cfe">
 <img width="298" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/a05922ff-4968-45eb-a5ab-9ed2038bd572">
-
+<br>
 this method also allows you to view the top 3 bestsellers for each region:
 <br>
 <img width="733" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/b1e93263-6388-441c-bdb0-de22cad6afc3">
