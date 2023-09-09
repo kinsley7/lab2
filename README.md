@@ -17,6 +17,13 @@ this method also allows you to view the top 3 bestsellers for each region:
 <hr>
 
 ### queue method:
+this allows the user to enter a year and then the games published that year are outputted:
+<br>
+<img width="839" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/f71184b1-0af6-46a1-901a-f9e6b5524cf6">
+<br>
+if no year is entered then a random year is selected:
+<br>
+<img width="451" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/55e36f98-fb96-4564-9723-db6330097d07">
 
 <hr>
 
