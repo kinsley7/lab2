@@ -286,7 +286,7 @@ namespace CrowdisLab2
         }
 
         //DICTIONARY publisher : most popular genre.
-        //shows publisher and what genre the majority of their games are (and lists the number of games that are that genre <-- havent done)
+        //shows publisher and what genre the majority of their games are (and lists the number of games that are that genre)
         //whenever publisher = a publisher it needs to count the different amount of genres and total them. then the genre with the most is outputted. repeat this again for the next publisher in the list
         public static void PublisherGenre(List<VideoGame> videogame)
         {
@@ -300,11 +300,13 @@ namespace CrowdisLab2
                                              mostCommonGenre = publisherGroup.GroupBy(v => v.Genre).OrderByDescending(g => g.Count()).Select(g => g.Key).FirstOrDefault() //finds the genre with the most amount of games or the first genre if there is multiple that are the same.
                                          };
 
-            //sorts it by publisher name (need to find how to take the genreCounts and add it to this?)
-            var sortedGenreCountsByPublisher = new SortedDictionary<string, string>();
+            //sorts it by publisher name (need to find how to take the genreCounts and add it to this?)<-- did it!
+            var sortedGenreCountsByPublisher = new SortedDictionary<string, (string,string)>();
             foreach (var publisher in genreCountsByPublisher.OrderBy(p => p.Publisher))
             {
-                sortedGenreCountsByPublisher.Add(publisher.Publisher, publisher.mostCommonGenre);
+                string genreCount = ($"with {publisher.genreCounts.Count()} games.");
+                (string, string) genres = (publisher.mostCommonGenre, genreCount); //using a tuple to get more values in the dictionary.
+                sortedGenreCountsByPublisher.Add(publisher.Publisher, genres);
             }
 
 
@@ -318,7 +320,7 @@ namespace CrowdisLab2
             //display each publisher and their most common genre
             foreach (var publisher in sortedGenreCountsByPublisher)
             {
-                Console.WriteLine($"{publisher.Key}'s most common genre: {publisher.Value}\n");
+                Console.WriteLine($"{publisher.Key}'s most common genre is {publisher.Value.ToString().Trim('(', ')')}\n"); //using trim to get rid of the () that outputs with tuples.
 
             }
 
