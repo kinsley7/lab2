@@ -258,7 +258,7 @@ namespace CrowdisLab2
             if (int.TryParse(input, out year)) //takes the input and outputs it as the int year
             {
                 Console.WriteLine($"----Games published in {year}----\n");
-                var games = videogame.Where(game => game.Year == year);
+                var games = queue.Where(game => game.Year == year);
 
                 foreach (var game in games)
                     Console.WriteLine(game.Name);
@@ -272,7 +272,7 @@ namespace CrowdisLab2
 
                 Console.WriteLine($"----Games published in {randomYear}----\n");
 
-                var games = videogame.Where(game => game.Year == randomYear);
+                var games = queue.Where(game => game.Year == randomYear);
 
                 foreach (var game in games)
                     Console.WriteLine(game.Name);
