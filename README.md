@@ -5,15 +5,17 @@ Lab 2 for CSCI 2910
 ### stack method:
 shows the global best sellers:
 <br>
-<img width="318" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/c70d6284-9ff9-4eec-b922-571e5d3a738e">
-<img width="291" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/547ffd72-2324-493c-8720-3a4e6c42e2fb">
+<img width="365" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/ae0b9c71-eaee-4351-acd8-8a92d634c33c">
+<img width="389" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/7dda7c5a-ffca-4dbd-8bb6-f0f6929c9c44">
+
 
 <br>
 
 this method also allows you to view the top 3 bestsellers for each region:
 <br>
-<img width="698" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/55d222eb-f24f-4c09-bf1d-2b3a1449961b">
-<img width="519" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/20c0723f-30dd-4c26-9c3f-13dd54e3603d">
+<img width="817" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/8f5eec03-4cfb-44a4-abf6-2327eedabaaa">
+<img width="519" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/c9f89b58-a76b-4411-a8b4-87386a899d32">
+
 
 <hr>
 
