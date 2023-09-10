@@ -32,11 +32,12 @@ if no year is entered then a random year is selected:
 <hr>
 
 ### dictionary method:
-this method shows each publisher and what genre most of their games are. it also shows which genre is the most common (spoiler: it's action).
+this method shows each publisher, what genre most of their games are, and how many games are of that genre. it also shows which genre is the most common (spoiler: it's action).
 <br> 
-<img width="538" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/b8f1ea50-778c-4caf-8080-384d6914454e">
-<img width="428" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/ad067345-c134-4c1c-87eb-489b7eb274ed">
-<img width="389" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/8c90cfde-59ca-4b7e-a1ea-ff7ed2b5bb77">
+<img width="528" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/70a0502a-13e9-42bc-a51a-ee473af45036">
+<img width="540" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/e850463e-4245-4aa0-95a2-5d659b073e6e">
+<img width="487" alt="image" src="https://github.com/kinsley7/lab2/assets/113950546/d11dca56-49e0-4989-9abd-ed26141cecdf">
+
 
 
 
