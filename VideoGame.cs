@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -29,14 +30,14 @@ namespace CrowdisLab2
         int Year { get; set; }
         string Genre { get; set; }
         string Publisher { get; set; }
-        string NASales { get; set; }
-        string EUSales { get; set; }
-        string JPSales { get; set; }
-        string OtherSales { get; set; }
-        string GlobalSales { get; set; }
+        float NASales { get; set; }
+        float EUSales { get; set; }
+        float JPSales { get; set; }
+        float OtherSales { get; set; }
+        float GlobalSales { get; set; }
 
 
-        public VideoGame(string name, string platform, int year, string genre, string publisher, string naSales, string euSales, string jpSales, string otherSales, string globalSales)
+        public VideoGame(string name, string platform, int year, string genre, string publisher, float naSales, float euSales, float jpSales, float otherSales, float globalSales)
         {
             Name = name;
             Platform = platform;
@@ -52,9 +53,9 @@ namespace CrowdisLab2
 
         public override string ToString()
         {
-
-            return "Name: " + Name + "\n" + "Platform: " + Platform + "\n" + "Year: " + Year + "\n" + "Genre: " + Genre + "\n"
+            string msg = "Name: " + Name + "\n" + "Platform: " + Platform + "\n" + "Year: " + Year + "\n" + "Genre: " + Genre + "\n"
                 + "Publisher: " + Publisher + "\n" + "Global Sales: " + GlobalSales + "\n ----------------- \n ";
+            return msg;
         }
 
         //sorts by name by default for lab 1 methods
@@ -171,6 +172,7 @@ namespace CrowdisLab2
                     for (int i = 0; i < 3; i++)
                     {
                         Console.WriteLine(videoGames.Peek());
+
                         if (videoGames.Any(o => o == videoGames.First()))  //from stack overflow: https://stackoverflow.com/questions/5307172/check-if-all-items-are-the-same-in-a-list  skips the first item but compares the rest to make sure they are not the same bc there are duplicates
                             videoGames.Pop();
                     }
@@ -216,7 +218,7 @@ namespace CrowdisLab2
                     break;
                 case "o":
                     Console.WriteLine("\n-------Highest Selling Games in Other Regions-------\n");
-                    var highestSellingOther = games.OrderBy(x => x.JPSales); //sorts by Other sales 
+                    var highestSellingOther = games.OrderBy(x => x.OtherSales); //sorts by Other sales 
                     videoGames = new Stack<VideoGame>(highestSellingOther.ToList());
 
                     for (int i = 0; i < 3; i++)
@@ -252,12 +254,12 @@ namespace CrowdisLab2
             Console.Write("Enter a year between 1980 - 2021 to display games published that year. Leave blank to display games from a random year: ");
             string input = Console.ReadLine();
             int year;
-            beginYear:
+        beginYear:
             if (int.TryParse(input, out year)) //takes the input and outputs it as the int year
             {
                 Console.WriteLine($"----Games published in {year}----\n");
                 var games = videogame.Where(game => game.Year == year);
-                
+
                 foreach (var game in games)
                     Console.WriteLine(game.Name);
 
@@ -274,7 +276,6 @@ namespace CrowdisLab2
 
                 foreach (var game in games)
                     Console.WriteLine(game.Name);
-
             }
             else
             {
@@ -284,48 +285,48 @@ namespace CrowdisLab2
             }
         }
 
-    //DICTIONARY publisher : most popular genre.
-    //shows publisher and what genre the majority of their games are (and lists the number of games that are that genre <-- havent done)
-    //whenever publisher = a publisher it needs to count the different amount of genres and total them. then the genre with the most is outputted. repeat this again for the next publisher in the list
-    public static void PublisherGenre(List<VideoGame> videogame)
-    {
-        //from chatgpt(i was very stuck🤓) - this grabs the publisher attribute and groups it by genre then it goes into a dictionary.
-        var genreCountsByPublisher = from v in videogame
-                                     group v by v.Publisher into publisherGroup
-                                     select new
-                                     {
-                                         Publisher = publisherGroup.Key,
-                                         genreCounts = publisherGroup.GroupBy(v => v.Genre).ToDictionary(g => g.Key, p => p.Count()), // counts all of the genres for each publisher(used for seeing the amount of games the publisher published for that genre).
-                                         mostCommonGenre = publisherGroup.GroupBy(v => v.Genre).OrderByDescending(g => g.Count()).Select(g => g.Key).FirstOrDefault() //finds the genre with the most amount of games or the first genre if there is multiple that are the same.
-                                     };
-
-        //sorts it by publisher name (need to find how to take the genreCounts and add it to this?)
-        var sortedGenreCountsByPublisher = new SortedDictionary<string, string>();
-        foreach (var publisher in genreCountsByPublisher.OrderBy(p => p.Publisher))
+        //DICTIONARY publisher : most popular genre.
+        //shows publisher and what genre the majority of their games are (and lists the number of games that are that genre <-- havent done)
+        //whenever publisher = a publisher it needs to count the different amount of genres and total them. then the genre with the most is outputted. repeat this again for the next publisher in the list
+        public static void PublisherGenre(List<VideoGame> videogame)
         {
-            sortedGenreCountsByPublisher.Add(publisher.Publisher, publisher.mostCommonGenre);
+            //from chatgpt(i was very stuck🤓) - this grabs the publisher attribute and groups it by genre then it goes into a dictionary.
+            var genreCountsByPublisher = from v in videogame
+                                         group v by v.Publisher into publisherGroup
+                                         select new
+                                         {
+                                             Publisher = publisherGroup.Key,
+                                             genreCounts = publisherGroup.GroupBy(v => v.Genre).ToDictionary(g => g.Key, p => p.Count()), // counts all of the genres for each publisher(used for seeing the amount of games the publisher published for that genre).
+                                             mostCommonGenre = publisherGroup.GroupBy(v => v.Genre).OrderByDescending(g => g.Count()).Select(g => g.Key).FirstOrDefault() //finds the genre with the most amount of games or the first genre if there is multiple that are the same.
+                                         };
+
+            //sorts it by publisher name (need to find how to take the genreCounts and add it to this?)
+            var sortedGenreCountsByPublisher = new SortedDictionary<string, string>();
+            foreach (var publisher in genreCountsByPublisher.OrderBy(p => p.Publisher))
+            {
+                sortedGenreCountsByPublisher.Add(publisher.Publisher, publisher.mostCommonGenre);
+            }
+
+
+            //lets us see the most common genre overall
+            var genreCountsOverall = videogame.GroupBy(v => v.Genre).ToDictionary(x => x.Key, x => x.Count()); //genre is our key, the count of the genres is our value  (x => x.Key, x => x.Count())
+            var mostCommonGenreOverall = genreCountsOverall.OrderByDescending(g => g.Value).First().Key; //orders ^genreCountsOverall by most to least, and grabbing the first key (which would be the key with the highest value)
+
+
+            Console.WriteLine("-------Each Publisher's Most Common Genre-------\n");
+
+            //display each publisher and their most common genre
+            foreach (var publisher in sortedGenreCountsByPublisher)
+            {
+                Console.WriteLine($"{publisher.Key}'s most common genre: {publisher.Value}\n");
+
+            }
+
+            Console.WriteLine($"The most common genre overall is {mostCommonGenreOverall.ToLower()}!\n");
         }
 
 
-        //lets us see the most common genre overall
-        var genreCountsOverall = videogame.GroupBy(v => v.Genre).ToDictionary(x => x.Key, x => x.Count()); //genre is our key, the count of the genres is our value  (x => x.Key, x => x.Count())
-        var mostCommonGenreOverall = genreCountsOverall.OrderByDescending(g => g.Value).First().Key; //orders ^genreCountsOverall by most to least, and grabbing the first key (which would be the key with the highest value)
-
-
-        Console.WriteLine("-------Each Publisher's Most Common Genre-------\n");
-
-        //display each publisher and their most common genre
-        foreach (var publisher in sortedGenreCountsByPublisher)
-        {
-            Console.WriteLine($"{publisher.Key}'s most common genre: {publisher.Value}\n");
-
-        }
-
-        Console.WriteLine($"The most common genre overall is {mostCommonGenreOverall.ToLower()}!\n");
     }
-
-
-}
 }
 
 
